@@ -1,11 +1,16 @@
 {
-  "name": "mirage",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "UNLICENSED"
+    "name": "mirage",
+    "version": "1.0.0",
+    "description": "",
+    "main": "application/main.js",
+    "scripts": {
+        "start": "electron .",
+        "lint": "prettier application/* --tab-width=4 --write"
+    },
+    "author": "",
+    "license": "UNLICENSED",
+    "dependencies": {
+        "electron": "^6.0.10",
+        "prettier": "^1.18.2"
+    }
 }
