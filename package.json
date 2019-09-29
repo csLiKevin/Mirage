@@ -4,13 +4,15 @@
     "description": "",
     "main": "application/main.js",
     "scripts": {
-        "start": "electron .",
-        "lint": "prettier application/* --tab-width=4 --write"
+        "lint": "prettier application/* --tab-width=4 --write",
+        "package": "node application/packager.js",
+        "start": "electron ."
     },
     "author": "",
     "license": "UNLICENSED",
-    "dependencies": {
+    "devDependencies": {
         "electron": "^6.0.10",
+        "electron-packager": "^14.0.6",
         "prettier": "^1.18.2"
     }
 }
