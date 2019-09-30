@@ -1,13 +1,11 @@
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, session } = require("electron");
+const express = require("express");
 
 let browserWindow;
+let server;
 
 function createWindow() {
-    browserWindow = new BrowserWindow({
-        height: 600,
-        width: 800,
-        webPreferences: { nodeIntegration: true }
-    });
+    browserWindow = new BrowserWindow({ height: 600, width: 800 });
 
     browserWindow.loadFile("application/index.html");
     browserWindow.openDevTools();
@@ -17,11 +15,38 @@ function createWindow() {
         // when you should delete the corresponding element.
         browserWindow = null;
     });
+
+    server = express()
+        .use(
+            express.static("static", {
+                setHeaders: (response, path) => {
+                    response.setHeader("Access-Control-Allow-Origin", "null");
+                }
+            })
+        )
+        .listen(3000);
+
+    // Reroute all external requests.
+    session.defaultSession.webRequest.onBeforeRequest(
+        { urls: ["*://*/*"] },
+        (details, callback) => {
+            const url = new URL(details.url);
+            if (url.hostname !== "localhost") {
+                callback({
+                    redirectURL: `http://localhost:3000/${url.hostname}${url.pathname}${url.search}`
+                });
+            } else {
+                callback({});
+            }
+        }
+    );
 }
 
 app.on("ready", createWindow);
 
 app.on("window-all-closed", () => {
+    server.close();
+
     // Quit the app when all windows are closed except on macOS; on macOS
     // applications and their menu bar stays active until the user quits
     // explicitly.

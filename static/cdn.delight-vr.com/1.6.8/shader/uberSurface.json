@@ -1,0 +1,1524 @@
+{
+    "vertexShader": {
+        "name": "uberSurface.vert"
+    },
+    "fragmentShader": {
+        "name": "uberSurface.frag"
+    },
+    "features": {
+        "litParticle": {
+            "define": "LIT_PARTICLE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "varianceShadowMap",
+                "particleDepth",
+                "unlit",
+                "lightAccumulation",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare",
+                "particle"
+            ]
+        },
+        "particle": {
+            "define": "PARTICLE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "varianceShadowMap",
+                "particleDepth",
+                "unlit",
+                "lightAccumulation",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare",
+                "litParticle"
+            ]
+        },
+        "bentNormalMapping": {
+            "define": "USE_BENT_NORMAL_MAP",
+            "type": "switch",
+            "enabled": false
+        },
+        "normalMapping": {
+            "define": "USE_NORMAL_MAP",
+            "type": "switch",
+            "enabled": false
+        },
+        "normalMapWithRoughness": {
+            "define": "USE_NORMAL_MAP_WITH_ROUGHNESS",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "roughnessValue",
+                "roughnessTexture"
+            ]
+        },
+        "normalMapWithRoughnessRABG": {
+            "define": "USE_NORMAL_MAP_RABG",
+            "type": "switch",
+            "enabled": false
+        },
+        "perVertexNormal": {
+            "define": "USE_VERTEX_NORMAL",
+            "type": "switch",
+            "enabled": true
+        },
+        "perVertexTangentSpace": {
+            "define": "USE_VERTEX_TANGENT_SPACE",
+            "type": "switch",
+            "enabled": false
+        },
+        "perVertexOcclusion": {
+            "define": "USE_VERTEX_AO",
+            "type": "switch",
+            "enabled": false
+        },
+        "constantRandomVertexOffset": {
+            "define": "USE_CONSTANT_RANDOM_VERTEX_OFFSET",
+            "type": "switch",
+            "enabled": false
+        },
+        "randomVertexOffset": {
+            "define": "USE_RANDOM_VERTEX_OFFSET",
+            "type": "switch",
+            "enabled": false
+        },
+        "vertexDisplacement": {
+            "define": "USE_VERTEX_DISPLACEMENT",
+            "type": "switch",
+            "enabled": false
+        },
+        "latlongIBR": {
+          "define": "USE_LATLONG_IBR",
+          "type": "switch",
+          "enabled": false,
+          "excludes": [
+            "cubeIBR"
+          ]
+        },
+        "cubeIBR": {
+          "define": "USE_CUBE_IBR",
+          "type": "switch",
+          "enabled": false,
+          "excludes": [
+            "latlongIBR"
+          ]
+        },
+        "deferredTexturing": {
+          "define": "USE_DEFERRED_TEXTURING",
+          "type": "switch",
+          "enabled": false
+        },
+        "diffuseTexture": {
+            "define": "USE_DIFFUSE_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "diffuseColor",
+                "diffuseTextureWithAlpha",
+                "diffuseTextureWithOcclusion",
+                "diffuseTextureWithMetallic"
+            ]
+        },
+        "diffuseTextureWithAlpha": {
+            "define": "USE_DIFFUSE_TEXTURE_WITH_ALPHA",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "diffuseColor",
+                "diffuseTexture",
+                "diffuseTextureWithOcclusion",
+                "diffuseTextureWithMetallic"
+            ]
+        },
+        "diffuseTextureWithOcclusion": {
+            "define": "USE_DIFFUSE_TEXTURE_WITH_OCCLUSION",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "diffuseColor",
+                "diffuseTexture",
+                "diffuseTextureWithAlpha",
+                "diffuseTextureWithMetallic"
+            ]
+        },
+        "diffuseTextureWithMetallic": {
+            "define": "USE_DIFFUSE_TEXTURE_WITH_METALLIC",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "diffuseColor",
+                "diffuseTexture",
+                "diffuseTextureWithAlpha",
+                "diffuseTextureWithOcclusion"
+            ]
+        },
+        "diffuseColor": {
+            "define": "USE_DIFFUSE_COLOR",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "diffuseTexture",
+                "diffuseTextureWithAlpha",
+                "diffuseTextureWithOcclusion",
+                "diffuseTextureWithMetallic"
+            ]
+        },
+        "diffuseDefault": {
+            "define": "DIFFUSE_DEFAULT",
+            "type": "number",
+            "value": 1.0,
+            "enabled": true
+        },
+        "irradianceIncludingDiffuse": {
+            "define": "USE_IRRADIANCE_INCLUDING_DIFFUSE",
+            "type": "switch",
+            "enabled": false
+        },
+        "irradianceWithMetallic": {
+            "define": "USE_IRRADIANCE_WITH_METALLIC",
+            "type": "switch",
+            "enabled": false
+        },
+        "irradianceBlend": {
+            "define": "USE_IRRADIANCE_BLEND",
+            "type": "switch",
+            "enabled": false
+        },
+        "bakedMapsUse2ndUV": {
+            "define": "USE_2ND_UV_FOR_BAKED_MAPS",
+            "type": "switch",
+            "enabled": false
+        },
+        "applyAoOnIrradiance": {
+            "define": "APPLY_AO_ON_IRRADIANCE",
+            "type": "switch",
+            "enabled": false
+        },
+        "aoBlendSoft": {
+            "define": "AO_BLEND_SOFT",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "aoBlendStrong"
+            ]
+        },
+        "aoBlendStrong": {
+            "define": "AO_BLEND_STRONG",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "aoBlendSoft"
+            ]
+        },
+        "dynamicAmbientOcclusion": {
+            "define": "USE_DYNAMIC_AMBIENT_OCCLUSION",
+            "type": "switch",
+            "enabled": false
+        },
+        "staticAmbientOcclusion": {
+            "define": "USE_STATIC_AMBIENT_OCCLUSION",
+            "type": "switch",
+            "enabled": false
+        },
+        "staticAmbientDirectionalOcclusion": {
+            "define": "USE_STATIC_AMBIENT_DIRECTIONAL_OCCLUSION",
+            "type": "switch",
+            "enabled": false
+        },
+        "specularTexture": {
+            "define": "USE_SPECULAR_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "specularColor",
+                "metallicValue",
+                "metallicTexture"
+            ]
+        },
+        "specularColor": {
+            "define": "USE_SPECULAR_COLOR",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "specularTexture",
+                "metallicValue",
+                "metallicTexture"
+            ]
+        },
+        "specularDefault": {
+            "define": "SPECULAR_DEFAULT",
+            "type": "number",
+            "value": 0.5,
+            "enabled": true
+        },
+        "metallicValue": {
+            "define": "USE_METALLIC_VALUE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "specularTexture",
+                "specularColor",
+                "metallicTexture"
+            ]
+        },
+        "metallicTexture": {
+            "define": "USE_METALLIC_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "specularTexture",
+                "specularColor",
+                "metallicValue"
+            ]
+        },
+        "dielectricReflectance": {
+            "define": "DIELECTRIC_REFLECTANCE",
+            "type": "number",
+            "value": 0.04,
+            "enabled": true
+        },
+        "roughnessTexture": {
+            "define": "USE_ROUGHNESS_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "roughnessValue",
+                "normalMapWithRoughness"
+            ]
+        },
+        "roughnessValue": {
+            "define": "USE_ROUGHNESS_VALUE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "roughnessTexture",
+                "normalMapWithRoughness"
+            ]
+        },
+        "roughnessDefault": {
+            "define": "ROUGHNESS_DEFAULT",
+            "type": "number",
+            "value": 0.5,
+            "enabled": true
+        },
+        "wetnessTexture": {
+            "define": "USE_WETNESS_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "wetnessValue",
+                "aoWithWetness"
+            ]
+        },
+        "wetnessValue": {
+            "define": "USE_WETNESS_VALUE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "wetnessTexture",
+                "aoWithWetness"
+            ]
+        },
+        "aoWithWetness": {
+            "define": "USE_AO_WITH_WETNESS",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "wetnessTexture",
+                "wetnessValue"
+            ]
+        },
+        "anisotropyTexture": {
+            "define": "USE_ANISOTROPY_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "anisotropyValue",
+                "reflectanceWithAnisotropy"
+            ]
+        },
+        "anisotropyValue": {
+            "define": "USE_ANISOTROPY_VALUE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "anisotropyTexture",
+                "reflectanceWithAnisotropy"
+            ]
+        },
+        "reflectanceWithAnisotropy": {
+            "define": "USE_REFLECTANCE_WITH_ANISOTROPY",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "anisotropyTexture",
+                "anisotropyValue"
+            ]
+        },
+        "opacityTexture": {
+            "define": "USE_OPACITY_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "opacityValue"
+            ]
+        },
+        "opacityValue": {
+            "define": "USE_OPACITY_VALUE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "opacityTexture"
+            ]
+        },
+        "opacityDefault": {
+            "define": "OPACITY_DEFAULT",
+            "type": "number",
+            "value": 1.0,
+            "enabled": true
+        },
+        "twoSidedMaterial": {
+            "define": "USE_TWO_SIDED_MATERIAL",
+            "type": "switch",
+            "enabled": false
+        },
+        "fresnelOpacity": {
+            "define": "USE_FRESNEL_OPACITY",
+            "type": "switch",
+            "enabled": true
+        },
+        "lightAccumulation": {
+            "define": "LIGHT_ACCUMULATION",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "varianceShadowMap",
+                "particle",
+                "particleDepth",
+                "unlit",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "ambientDiffuseTexture": {
+            "define": "USE_AMBIENT_DIFFUSE_TEXTURE",
+            "type": "switch",
+            "enabled": false
+        },
+        "ambientDiffuseProbeTexture": {
+            "define": "USE_AMBIENT_DIFFUSE_PROBE_TEXTURE",
+            "type": "switch",
+            "enabled": false
+        },
+        "ambientDiffuseSH": {
+            "define": "USE_AMBIENT_DIFFUSE_SH",
+            "type": "switch",
+            "enabled": false
+        },
+        "ambientIBL": {
+            "define": "USE_AMBIENT_IBL",
+            "type": "switch",
+            "enabled": false
+        },
+        "envBrdfLut": {
+            "define": "USE_ENV_BRDF_LUT",
+            "type": "switch",
+            "enabled": true
+        },
+        "specularPowerIblLookup": {
+            "define": "USE_SPECULAR_POWER_IBL_LOOKUP",
+            "type": "switch",
+            "enabled": false
+        },
+        "ambientSSR": {
+            "define": "USE_AMBIENT_SSR",
+            "type": "switch",
+            "enabled": false
+        },
+        "ambientColor": {
+            "define": "USE_AMBIENT_COLOR",
+            "type": "switch",
+            "enabled": false
+        },
+        "emissiveTexture": {
+            "define": "USE_EMISSIVE_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "emissiveColor"
+            ]
+        },
+        "emissiveColor": {
+            "define": "USE_EMISSIVE_COLOR",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "emissiveTexture"
+            ]
+        },
+        "emissiveDefault": {
+            "define": "EMISSIVE_DEFAULT",
+            "type": "number",
+            "value": 0.0,
+            "enabled": true
+        },
+        "rgbmEmissiveInput": {
+            "define": "USE_RGBM_EMISSIVE_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "rgbmNormalInput": {
+            "define": "USE_RGBM_NORMAL_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "rgbmDiffuseInput": {
+            "define": "USE_RGBM_DIFFUSE_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "highlightColor": {
+            "define": "USE_HIGHLIGHT_COLOR",
+            "type": "switch",
+            "enabled": false
+        },
+        "highPrecisionBuffer": {
+            "define": "USE_HDR",
+            "type": "switch",
+            "enabled": true
+        },
+        "logLuvInput": {
+            "define": "USE_LOGLUV_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "rgbmInput": {
+            "define": "USE_RGBM_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "rgbmRadianceProbeInput": {
+            "define": "USE_RGBM_RADIANCE_PROBE_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "rgbmIrradianceProbeInput": {
+            "define": "USE_RGBM_IRRADIANCE_PROBE_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "rgbmIrradianceInput": {
+            "define": "USE_RGBM_IRRADIANCE_INPUT",
+            "type": "switch",
+            "enabled": false
+        },
+        "vignetting": {
+            "define": "USE_VIGNETTING",
+            "type": "switch",
+            "enabled": true
+        },
+        "colorGradient": {
+            "define": "USE_COLOR_GRADIENT",
+            "type": "switch",
+            "enabled": false
+        },
+        "depthTexture": {
+            "define": "DEPTH_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "shadowMap",
+                "varianceShadowMap",
+                "particle",
+                "particleDepth",
+                "unlit",
+                "lightAccumulation",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "particleDepth": {
+            "define": "PARTICLE_DEPTH",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "shadowMap",
+                "varianceShadowMap",
+                "particle",
+                "depthTexture",
+                "unlit",
+                "lightAccumulation",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "shadowMap": {
+            "define": "SHADOW_MAP",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "varianceShadowMap",
+                "particle",
+                "particleDepth",
+                "unlit",
+                "lightAccumulation",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "varianceShadowMap": {
+            "define": "VARIANCE_SHADOW_MAP",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "particle",
+                "particleDepth",
+                "unlit",
+                "lightAccumulation",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "lit": {
+            "define": "LIT",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "particle",
+                "particleDepth",
+                "varianceShadowMap",
+                "lightAccumulation",
+                "nop",
+                "unlit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "litPointSprite": {
+            "define": "LIT_POINT_SPRITE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "lit",
+                "depthTexture",
+                "shadowMap",
+                "particle",
+                "particleDepth",
+                "varianceShadowMap",
+                "lightAccumulation",
+                "nop",
+                "unlit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "writeDepth": {
+            "define": "WRITE_DEPTH",
+            "type": "switch",
+            "enabled": false
+        },
+        "directionalLightCount": {
+            "define": "DIR_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "shadowedDirectionalLightCount": {
+            "define": "SHADOWED_DIR_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "pointLightCount": {
+            "define": "POINT_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "shadowedPointLightCount": {
+            "define": "SHADOWED_POINT_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "spotLightCount": {
+            "define": "SPOT_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "shadowedSpotLightCount": {
+            "define": "SHADOWED_SPOT_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "sphereLightCount": {
+            "define": "SPHERE_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "shadowedSphereLightCount": {
+            "define": "SHADOWED_SPHERE_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "areaLightCount": {
+            "define": "AREA_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "shadowedAreaLightCount": {
+            "define": "SHADOWED_AREA_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "tubeLightCount": {
+            "define": "TUBE_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "shadowedTubeLightCount": {
+            "define": "SHADOWED_TUBE_LIGHT_COUNT",
+            "type": "number",
+            "value": 0,
+            "enabled": true
+        },
+        "unlit": {
+            "define": "UNLIT",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "particle",
+                "particleDepth",
+                "varianceShadowMap",
+                "lightAccumulation",
+                "nop",
+                "lit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "unlitTexture": {
+            "define": "USE_UNLIT_TEXTURE",
+            "type": "switch",
+            "enabled": false
+        },
+        "smoothBorder": {
+            "define": "USE_SMOOTH_BORDER",
+            "type": "switch",
+            "enabled": false
+        },
+        "smoothStrength": {
+          "define": "SMOOTH_STRENGTH",
+          "type": "number",
+          "value": 10,
+          "enabled": true
+        },
+        "billboarding": {
+            "define": "USE_BILLBOARDING",
+            "type": "switch",
+            "enabled": false
+        },
+        "billboardOffset": {
+            "define": "USE_BILLBOARD_OFFSET",
+            "type": "switch",
+            "enabled": false
+        },
+        "skyBox": {
+            "define": "USE_SKYBOX",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+              "ndcScaling",
+              "fullscreen",
+              "skyBoxSH"
+            ]
+        },
+        "skyBoxSH": {
+            "define": "USE_SKYBOX_SH",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+              "ndcScaling",
+              "fullscreen",
+              "skyBox"
+            ]
+        },
+        "unlitColor": {
+            "define": "USE_UNLIT_COLOR",
+            "type": "switch",
+            "enabled": false
+        },
+        "unlitGradient": {
+            "define": "USE_UNLIT_GRADIENT",
+            "type": "switch",
+            "enabled": false
+        },
+        "unlitGain": {
+            "define": "USE_UNLIT_GAIN",
+            "type": "switch",
+            "enabled": false
+        },
+        "spriteAnimation": {
+            "define": "USE_SPRITE_ANIMATION",
+            "type": "switch",
+            "enabled": false
+        },
+        "spriteAnimationOriginTopLeft": {
+            "define": "USE_SPRITE_ANIMATION_ORIGIN_TOP_LEFT",
+            "type": "switch",
+            "enabled": false
+        },
+        "diffuseSpriteAnimation": {
+            "define": "USE_DIFFUSE_SPRITE_ANIMATION",
+            "type": "switch",
+            "enabled": false
+        },
+        "texCoordOffset": {
+            "define": "USE_TEXCOORD_OFFSET",
+            "type": "switch",
+            "enabled": false
+        },
+        "texCoordScale": {
+            "define": "USE_TEXCOORD_SCALE",
+            "type": "switch",
+            "enabled": false
+        },
+        "ndcScaling": {
+            "define": "USE_NDC_SCALING",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+              "fullscreen",
+              "skyBox",
+              "skyBoxSH"
+            ]
+        },
+        "ndcRotation": {
+            "define": "USE_NDC_ROTATION",
+            "type": "switch",
+            "enabled": false
+        },
+        "fullscreen": {
+            "define": "USE_FULLSCREEN_QUAD",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+              "ndcScaling",
+              "skyBox",
+              "skyBoxSH"
+            ]
+        },
+        "discardAlpha": {
+            "define": "DISCARD_ALPHA",
+            "type": "switch",
+            "enabled": false
+        },
+        "viewSpaceDepth": {
+            "define": "USE_VIEW_SPACE_DEPTH",
+            "type": "switch",
+            "enabled": false
+        },
+        "gammaSpace": {
+            "define": "USE_GAMMA_SPACE",
+            "type": "switch",
+            "enabled": true
+        },
+        "gammaSpaceSpecular": {
+            "define": "USE_GAMMA_SPACE_SPECULAR",
+            "type": "switch",
+            "enabled": false
+        },
+        "gammaSpaceIrradiance": {
+            "define": "USE_GAMMA_SPACE_IRRADIANCE",
+            "type": "switch",
+            "enabled": false
+        },
+        "gammaSpaceRoughness": {
+            "define": "USE_GAMMA_SPACE_ROUGHNESS",
+            "type": "switch",
+            "enabled": false
+        },
+        "gammaSpaceEmissive": {
+            "define": "USE_GAMMA_SPACE_EMISSIVE",
+            "type": "switch",
+            "enabled": false
+        },
+        "highPrecisionFloat": {
+            "define": "USE_HIGHP_FLOAT",
+            "type": "switch",
+            "enabled": true
+        },
+        "ssrPre": {
+            "define": "SSR_PRE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "particle",
+                "particleDepth",
+                "varianceShadowMap",
+                "lightAccumulation",
+                "unlit",
+                "lit",
+                "nop",
+                "lensFlare"
+            ]
+        },
+        "nop": {
+            "define": "NOP",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "particle",
+                "particleDepth",
+                "varianceShadowMap",
+                "lightAccumulation",
+                "unlit",
+                "lit",
+                "ssrPre",
+                "lensFlare"
+            ]
+        },
+        "maxLightCount": {
+            "define": "MAX_LIGHT_COUNT",
+            "type": "number",
+            "value": 32,
+            "enabled": true
+        },
+        "oitTransparency": {
+            "define": "USE_OIT_TRANSPARENCY",
+            "type": "switch",
+            "enabled": false
+        },
+        "transparency": {
+            "define": "USE_TRANSPARENCY",
+            "type": "switch",
+            "enabled": false
+        },
+        "refraction": {
+            "define": "USE_REFRACTION",
+            "type": "switch",
+            "enabled": false
+        },
+        "refractionBlurPassCount": {
+            "define": "REFRACTION_BLUR_PASS_COUNT",
+            "type": "number",
+            "value": 3,
+            "enabled": true
+        },
+        "standardBrdf": {
+            "define": "USE_STANDARD_BRDF",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "anisotropicBrdf",
+                "clothBrdf"
+            ]
+        },
+        "anisotropicBrdf": {
+            "define": "USE_ANISOTROPIC_BRDF",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "standardBrdf",
+                "clothBrdf"
+            ]
+        },
+        "clothBrdf": {
+            "define": "USE_CLOTH_BRDF",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "standardBrdf",
+                "anisotropicBrdf"
+            ]
+        },
+        "schlickFresnel": {
+            "define": "USE_SCHLICK_FRESNEL",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "referenceFresnel"
+            ]
+        },
+        "referenceFresnel": {
+            "define": "USE_REFERENCE_FRESNEL",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "schlickFresnel"
+            ]
+        },
+        "ggxDistribution": {
+            "define": "USE_GGX_DISTRIBUTION",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "beckmannDistribution"
+            ]
+        },
+        "beckmannDistribution": {
+            "define": "USE_BECKMANN_DISTRIBUTION",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "ggxDistribution"
+            ]
+        },
+        "schlickVisibility": {
+            "define": "USE_SCHLICK_VISIBILITY",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "smithVisibility",
+                "smithJointVisibility"
+            ]
+        },
+        "smithVisibility": {
+            "define": "USE_SMITH_VISIBILITY",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "schlickVisibility",
+                "smithJointVisibility"
+            ]
+        },
+        "smithJointVisibility": {
+            "define": "USE_SMITHJOINT_VISIBILITY",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "schlickVisibility",
+                "smithVisibility"
+            ]
+        },
+        "clearcoatValue": {
+            "define": "USE_CLEARCOAT_VALUE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "clearcoatTexture"
+            ]
+        },
+        "clearcoatTexture": {
+            "define": "USE_CLEARCOAT_TEXTURE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "clearcoatValue"
+            ]
+        },
+        "lambertDiffuse": {
+            "define": "USE_LAMBERT_DIFFUSE",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "burleyDiffuse",
+                "orenNayarDiffuse"
+            ]
+        },
+        "burleyDiffuse": {
+            "define": "USE_BURLEY_DIFFUSE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "lambertDiffuse",
+                "orenNayarDiffuse"
+            ]
+        },
+        "orenNayarDiffuse": {
+            "define": "USE_ORENNAYAR_DIFFUSE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "burleyDiffuse",
+                "lambertDiffuse"
+            ]
+        },
+        "parallaxCorrection": {
+            "define": "USE_PARALLAX_CORRECTION",
+            "type": "switch",
+            "enabled": false
+        },
+        "lensFlare": {
+            "define": "USE_LENS_FLARE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "litPointSprite",
+                "depthTexture",
+                "shadowMap",
+                "particle",
+                "particleDepth",
+                "varianceShadowMap",
+                "lightAccumulation",
+                "unlit",
+                "lit",
+                "ssrPre",
+                "nop"
+            ]
+        },
+        "autoRotate": {
+            "define": "USE_AUTO_ROTATE",
+            "type": "switch",
+            "enabled": false
+        },
+        "textureOcclude": {
+            "define": "USE_FLARE_TEXTURE_OCCLUDE",
+            "type": "switch",
+            "enabled": false
+        },
+        "offsetScaling": {
+            "define": "USE_OFFSET_SCALING",
+            "type": "switch",
+            "enabled": false
+        },
+        "customRotation": {
+            "define": "USE_CUSTOM_ROTATION",
+            "type": "switch",
+            "enabled": false
+        },
+        "latlongFormat": {
+            "define": "USE_LATLONG_FORMAT",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "paraboloidFormat",
+                "cubemapFormat",
+                "stereoscopicFormat"
+            ]
+        },
+        "paraboloidFormat": {
+            "define": "USE_PARABOLOID_FORMAT",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "latlongFormat",
+                "cubemapFormat",
+                "stereoscopicFormat"
+            ]
+        },
+        "cubemapFormat": {
+            "define": "USE_CUBEMAP_FORMAT",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "latlongFormat",
+                "paraboloidFormat",
+                "stereoscopicFormat"
+            ]
+        },
+        "stereoscopicFormat": {
+            "define": "USE_STEREOSCOPIC_FORMAT",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "latlongFormat",
+                "cubemapFormat",
+                "paraboloidFormat"
+            ]
+        },
+        "stereoscopicFlatLr": {
+            "define": "USE_STEREOSCOPIC_FLAT_LR",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopicFlatTb"
+            ]
+        },
+        "stereoscopicFlatTb": {
+            "define": "USE_STEREOSCOPIC_FLAT_TB",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopicFlatLr"
+            ]
+        },
+        "stereoscopicFisheyeLr": {
+          "define": "USE_STEREOSCOPIC_FISHEYE_LR",
+          "type": "switch",
+          "enabled": false,
+          "excludes": [
+            "stereoscopic360Lr",
+            "stereoscopic180TbSpherical",
+            "stereoscopic360Tb",
+            "stereoscopic180Lr",
+            "stereoscopic180Tb",
+            "stereoscopicCubemap",
+            "stereoscopicLatlong"
+          ]
+        },
+        "stereoscopic180LrSpherical": {
+            "define": "USE_STEREOSCOPIC_180_LR_SPHERICAL",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic360Lr",
+                "stereoscopic180TbSpherical",
+                "stereoscopic360Lr",
+                "stereoscopic360Tb",
+                "stereoscopic180Lr",
+                "stereoscopic180Tb",
+                "stereoscopicCubemap",
+                "stereoscopicFisheyeLr",
+                "stereoscopicLatlong"
+            ]
+        },
+        "stereoscopic360Lr": {
+            "define": "USE_STEREOSCOPIC_360_LR",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic180LrSpherical",
+                "stereoscopic180TbSpherical",
+                "stereoscopic360Tb",
+                "stereoscopic180Lr",
+                "stereoscopic180Tb",
+                "stereoscopicCubemap",
+                "stereoscopicFisheyeLr",
+                "stereoscopicLatlong"
+            ]
+        },
+        "stereoscopic180TbSpherical": {
+            "define": "USE_STEREOSCOPIC_180_TB_SPHERICAL",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic180LrSpherical",
+                "stereoscopic360Lr",
+                "stereoscopic360Tb",
+                "stereoscopic180Lr",
+                "stereoscopic180Tb",
+                "stereoscopicCubemap",
+                "stereoscopicFisheyeLr",
+                "stereoscopicLatlong"
+            ]
+        },
+        "stereoscopic360Tb": {
+            "define": "USE_STEREOSCOPIC_360_TB",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic180LrSpherical",
+                "stereoscopic360Lr",
+                "stereoscopic180TbSpherical",
+                "stereoscopic180Lr",
+                "stereoscopic180Tb",
+                "stereoscopicCubemap",
+                "stereoscopicFisheyeLr",
+                "stereoscopicLatlong"
+            ]
+        },
+        "stereoscopic180Lr": {
+            "define": "USE_STEREOSCOPIC_180_LR",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic180LrSpherical",
+                "stereoscopic360Lr",
+                "stereoscopic180TbSpherical",
+                "stereoscopic360Tb",
+                "stereoscopic180Tb",
+                "stereoscopicCubemap",
+                "stereoscopicFisheyeLr",
+                "stereoscopicLatlong"
+            ]
+        },
+        "stereoscopic180Tb": {
+            "define": "USE_STEREOSCOPIC_180_TB",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic180LrSpherical",
+                "stereoscopic360Lr",
+                "stereoscopic180TbSpherical",
+                "stereoscopic360Tb",
+                "stereoscopic180Lr",
+                "stereoscopicCubemap",
+                "stereoscopicFisheyeLr",
+                "stereoscopicLatlong"
+            ]
+        },
+        "stereoscopicLatlong": {
+            "define": "USE_STEREOSCOPIC_LATLONG",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic180LrSpherical",
+                "stereoscopic360Lr",
+                "stereoscopic180TbSpherical",
+                "stereoscopic360Tb",
+                "stereoscopic180Tb",
+                "stereoscopic180Lr",
+                "stereoscopicFisheyeLr",
+                "stereoscopicCubemap"
+            ]
+        },
+        "stereoscopicCubemap": {
+            "define": "USE_STEREOSCOPIC_CUBEMAP",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "stereoscopic180LrSpherical",
+                "stereoscopic360Lr",
+                "stereoscopic180TbSpherical",
+                "stereoscopic360Tb",
+                "stereoscopic180Tb",
+                "stereoscopicFisheyeLr",
+                "stereoscopic180Lr",
+                "stereoscopicLatlong"
+            ]
+        },
+        "mono180": {
+            "define": "USE_MONO_180",
+            "type": "switch",
+            "enabled": false
+        },
+        "stereoscopicPreSeparated": {
+            "define": "USE_STEREOSCOPIC_PRE_SEPARATED",
+            "type": "switch",
+            "enabled": false
+        },
+        "roughnessWorkflow": {
+            "define": "USE_ROUGHNESS_WORKFLOW",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "glossinessWorkflow",
+                "specularPowerWorkflow"
+            ]
+        },
+        "glossinessWorkflow": {
+            "define": "USE_GLOSSINESS_WORKFLOW",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "roughnessWorkflow",
+                "specularPowerWorkflow"
+            ]
+        },
+        "specularPowerWorkflow": {
+            "define": "USE_SPECULAR_POWER_WORKFLOW",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "roughnessWorkflow",
+                "glossinessWorkflow"
+            ]
+        },
+        "primitiveInformation": {
+            "define": "USE_PRIMITIVE_INFORMATION",
+            "type": "switch",
+            "enabled": false
+        },
+        "rightHandedCoordinateSystem": {
+            "define": "USE_RIGHT_HANDED_COORDINATE_SYSTEM",
+            "type": "switch",
+            "enabled": true
+        },
+        "paraboloidProjection": {
+            "define": "USE_PARABOLOID_PROJECTION",
+            "type": "switch",
+            "enabled": false
+        },
+        "zDepthFog": {
+            "define": "USE_Z_DEPTH_FOG",
+            "type": "switch",
+            "enabled": false
+        },
+        "surfaceVignetting": {
+            "define": "USE_SURFACE_VIGNETTING",
+            "type": "switch",
+            "enabled": false
+        },
+        "highLuminanceDiffuseBoost": {
+            "define": "USE_HIGH_LUMINANCE_DIFFUSE_BOOST",
+            "type": "switch",
+            "enabled": false
+        },
+        "complexSrgbConversion": {
+            "define": "USE_COMPLEX_SRGB_CONVERSION",
+            "type": "switch",
+            "enabled": false
+        },
+        "envRotation": {
+            "define": "USE_ENV_ROTATION",
+            "type": "switch",
+            "enabled": false
+        },
+        "iblDirectionalShadowing": {
+            "define": "USE_IBL_DIRECTIONAL_SHADOWING",
+            "type": "switch",
+            "enabled": false
+        },
+        "envHasMipmaps": {
+            "define": "ENV_HAS_MIPMAPS",
+            "type": "switch",
+            "enabled": false
+        },
+        "depthCorrection": {
+            "define": "USE_DEPTH_CORRECTION",
+            "type": "switch",
+            "enabled": false
+        },
+        "depth32Packing": {
+            "define": "USE_DEPTH_PACKING",
+            "type": "switch",
+            "enabled": false
+        },
+        "depth24Packing": {
+            "define": "USE_DEPTH_24_PACKING",
+            "type": "switch",
+            "enabled": false
+        },
+        "flippedLatlongY": {
+            "define": "FLIPPED_LATLONG_Y",
+            "type": "switch",
+            "enabled": true
+        },
+        "convertToBGRA": {
+            "define": "CONVERT_TO_BGRA",
+            "type": "switch",
+            "enabled": false
+        },
+        "flipY": {
+            "define": "FLIP_Y",
+            "type": "switch",
+            "enabled": false
+        },
+        "uvBasedRadialOpacity": {
+            "define": "USE_UV_BASED_RADIAL_OPACITY",
+            "type": "switch",
+            "enabled": false
+        },
+        "environmentRefraction": {
+            "define": "USE_ENVIRONMENT_REFRACTION",
+            "type": "switch",
+            "enabled": false
+        },
+        "environmentRefractionDispersion": {
+            "define": "USE_ENVIRONMENT_REFRACTION_DISPERSION",
+            "type": "switch",
+            "enabled": false
+        },
+        "discardTransparent": {
+            "define": "DISCARD_TRANSPARENT",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "discardOpaque",
+                "discardNone"
+            ]
+        },
+        "discardOpaque": {
+            "define": "DISCARD_OPAQUE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "discardTransparent",
+                "discardNone"
+            ]
+        },
+        "discardNone": {
+            "define": "DISCARD_NONE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "discardTransparent",
+                "discardOpaque"
+            ]
+        },
+        "tonemapSimple": {
+            "define": "USE_TONEMAP_SIMPLE",
+            "type": "switch",
+            "enabled": false,
+            "excludes": [
+                "tonemapFilmic"
+            ]
+        },
+        "tonemapFilmic": {
+            "define": "USE_TONEMAP_FILMIC",
+            "type": "switch",
+            "enabled": true,
+            "excludes": [
+                "tonemapSimple"
+            ]
+        },
+        "fresnelOutline": {
+            "define": "USE_FRESNEL_OUTLINE",
+            "type": "switch",
+            "enabled": false
+        },
+        "foveatedEnv": {
+            "define": "USE_FOVEATED_ENV",
+            "type": "switch",
+            "enabled": false
+        },
+        "foveaDistortionExponentX": {
+            "define": "FOVEA_DISTORTION_EXPONENT_X",
+            "type": "number",
+            "value": 1.0,
+            "enabled": true
+        },
+        "foveaDistortionExponentY": {
+            "define": "FOVEA_DISTORTION_EXPONENT_Y",
+            "type": "number",
+            "value": 1.0,
+            "enabled": true
+        },
+        "lockToCameraPosition": {
+            "define": "LOCK_TO_CAMERA_POSITION",
+            "type": "switch",
+            "enabled": false
+        }
+    }
+}

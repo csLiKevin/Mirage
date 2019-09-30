@@ -4,15 +4,23 @@
     "description": "",
     "main": "application/main.js",
     "scripts": {
-        "lint": "prettier application/* --tab-width=4 --write",
+        "build": "rollup --config src/rollup.config.js",
+        "lint": "prettier application/* src/* --tab-width=4 --write",
         "package": "node application/packager.js",
-        "start": "electron ."
+        "start": "electron .",
+        "watch": "rollup --config src/rollup.config.js --watch"
     },
     "author": "",
     "license": "UNLICENSED",
     "devDependencies": {
         "electron": "^6.0.10",
         "electron-packager": "^14.0.6",
-        "prettier": "^1.18.2"
-    }
+        "express": "^4.17.1",
+        "prettier": "^1.18.2",
+        "rollup": "^1.22.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-svelte": "^5.1.0",
+        "svelte": "^3.12.1"
+    },
+    "dependencies": {}
 }
