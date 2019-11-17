@@ -4,11 +4,11 @@
     "description": "",
     "main": "src/main.js",
     "scripts": {
-        "build": "rollup --config src/rollup.config.js",
+        "build": "rollup --config",
         "lint": "prettier src/* --tab-width=4 --write",
         "package": "node src/packager.js",
         "start": "electron .",
-        "watch": "rollup --config src/rollup.config.js --watch"
+        "watch": "rollup --config --watch"
     },
     "author": "",
     "license": "UNLICENSED",
