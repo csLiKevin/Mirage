@@ -6,12 +6,12 @@ let browserWindow;
 
 function createWindow() {
     browserWindow = new BrowserWindow({
-        frame: false,
+        // frame: false,
         height: 720,
         width: 1280
     });
-    browserWindow.removeMenu();
-    browserWindow.loadFile("application/index.html");
+    // browserWindow.removeMenu();
+    browserWindow.loadFile("src/index.html");
     browserWindow.on("closed", () => {
         // Dereference the window object, usually you would store windows
         // in an array if your app supports multi windows, this is the time

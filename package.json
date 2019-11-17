@@ -2,11 +2,11 @@
     "name": "mirage",
     "version": "1.0.0",
     "description": "",
-    "main": "application/main.js",
+    "main": "src/main.js",
     "scripts": {
         "build": "rollup --config src/rollup.config.js",
-        "lint": "prettier application/* src/* --tab-width=4 --write",
-        "package": "node application/packager.js",
+        "lint": "prettier src/* --tab-width=4 --write",
+        "package": "node src/packager.js",
         "start": "electron .",
         "watch": "rollup --config src/rollup.config.js --watch"
     },

@@ -3,16 +3,16 @@ const packager = require("electron-packager");
 const whitelist = [
     "",
     "/package.json",
-    "/application",
-    "/application/index.html",
-    "/application/main.js"
+    "/src",
+    "/src/index.html",
+    "/src/main.js"
 ];
 
 packager({
     asar: true,
     dir: ".",
-    ignore: path => !whitelist.includes(path),
+    ignore: path => !whitelist.includes(path) && !path.startsWith("/static"),
     name: "Mirage",
-    out: "build/client",
+    out: "build",
     overwrite: true
 });

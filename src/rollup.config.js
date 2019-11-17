@@ -2,9 +2,9 @@ import resolve from "rollup-plugin-node-resolve";
 import svelte from "rollup-plugin-svelte";
 
 export default {
-    input: ["src/vr_player.js"],
+    input: ["src/player.js"],
     output: {
-        dir: "static/js",
+        dir: "static",
         format: "cjs"
     },
     plugins: [resolve(), svelte()]
