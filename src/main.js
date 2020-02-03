@@ -6,7 +6,7 @@ let browserWindow;
 
 function createWindow() {
     browserWindow = new BrowserWindow({
-        // frame: false,
+        frame: false,
         height: 720,
         width: 1280
     });
