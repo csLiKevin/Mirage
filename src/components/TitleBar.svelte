@@ -1,14 +1,9 @@
-<script type="text/javascript">
-    import remote from "pad-left";
-    console.log(remote);
-</script>
-
 <style type="text/css">
     button {
         -webkit-app-region: no-drag;
     }
 
-    .titlebar {
+    .title-bar {
         -webkit-app-region: drag;
         background-color: white;
         position: fixed;
@@ -17,6 +12,6 @@
     }
 </style>
 
-<div class="titlebar">
+<div class="title-bar">
     <button on:click|once={e => window.close()}>Hello World</button>
 </div>
