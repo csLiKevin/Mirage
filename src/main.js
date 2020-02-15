@@ -6,11 +6,11 @@ let browserWindow;
 
 function createWindow() {
     browserWindow = new BrowserWindow({
-        frame: false,
+        frame: true,
         height: 720,
         width: 1280
     });
-    // browserWindow.removeMenu();
+    browserWindow.removeMenu();
     browserWindow.loadFile("src/index.html");
     browserWindow.on("closed", () => {
         // Dereference the window object, usually you would store windows
