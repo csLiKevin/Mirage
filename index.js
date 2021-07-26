@@ -116573,3 +116573,19 @@ containerElement.addEventListener("drop", function (event) {
     var file = files[0];
     player.src({ type: file.type, src: URL.createObjectURL(file) });
 });
+document.addEventListener("keydown", function (event) {
+    var code = event.code;
+    if (code === "Space") {
+        event.preventDefault();
+        player.paused() ? player.play() : player.pause();
+        return;
+    }
+    if (code === "KeyR") {
+        event.preventDefault();
+        var position = player.vr().camera.position;
+        position.x = 0;
+        position.y = 0;
+        position.z = 0;
+        return;
+    }
+});
