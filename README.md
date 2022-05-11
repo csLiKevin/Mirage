@@ -1,5 +1,5 @@
 # Mirage
 
-https://kevinli.us/Mirage/ · https://csLiKevin.github.io/Mirage/
+https://mirage-vr.vercel.app/
 
 Video player with VR support.
