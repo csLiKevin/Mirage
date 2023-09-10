@@ -5,20 +5,20 @@
     // Prevent videojs-vr from changing the BigPlayButton's styles.
     // import "videojs-vr/dist/videojs-vr.css";
 
+    interface VRVideoJsPlayer extends VideoJsPlayer {
+        camera: {
+            position: {
+                x: number;
+                y: number;
+                z: number;
+            };
+        };
+        vr: (options?: { [key: string]: string }) => VRVideoJsPlayer;
+    }
+
     onMount(async () => {
         const videojs = await import("video.js");
         await import("videojs-vr");
-
-        interface VRVideoJsPlayer extends VideoJsPlayer {
-            camera: {
-                position: {
-                    x: number;
-                    y: number;
-                    z: number;
-                };
-            };
-            vr: (options?: { [key: string]: string }) => VRVideoJsPlayer;
-        }
 
         const player = videojs.default("video") as VRVideoJsPlayer;
         player.vr({ projection: "180_LR" });
@@ -70,6 +70,7 @@
 </script>
 
 <div id="container">
+    <!-- svelte-ignore a11y-media-has-caption -->
     <video id="video" class="video-js" controls preload="auto" />
 </div>
 

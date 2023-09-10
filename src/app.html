@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <link rel="icon" href="%svelte.assets%/favicon.ico" />
+        <link rel="icon" href="%sveltekit.assets%/favicon.ico" />
         <meta charset="utf-8" />
         <meta name="description" content="VR Video Player" />
         <meta name="keywords" content="video, player, virtual reality, vr" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Mirage</title>
-        %svelte.head%
+        %sveltekit.head%
     </head>
-    <body>
+    <body data-sveltekit-preload-data="hover">
         <noscript>Javascript is required to render properly.</noscript>
-        <div>%svelte.body%</div>
+        <div style="display: contents">%sveltekit.body%</div>
     </body>
 </html>
